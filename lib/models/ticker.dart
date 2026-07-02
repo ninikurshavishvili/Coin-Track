@@ -7,6 +7,7 @@ class Ticker {
     this.totalSupply,
     this.maxSupply,
     this.circulatingSupply,
+    this.firstDataAt,
     this.lastUpdated,
     required this.quote,
   });
@@ -23,6 +24,7 @@ class Ticker {
       totalSupply: _num(json['total_supply']),
       maxSupply: _num(json['max_supply']),
       circulatingSupply: _num(json['circulating_supply']),
+      firstDataAt: DateTime.tryParse(json['first_data_at'] as String? ?? ''),
       lastUpdated: DateTime.tryParse(json['last_updated'] as String? ?? ''),
       quote: TickerQuote.fromJson(usd),
     );
@@ -35,6 +37,7 @@ class Ticker {
   final num? totalSupply;
   final num? maxSupply;
   final num? circulatingSupply;
+  final DateTime? firstDataAt;
   final DateTime? lastUpdated;
   final TickerQuote quote;
 
@@ -89,7 +92,8 @@ class OhlcvPoint {
 
   factory OhlcvPoint.fromJson(Map<String, dynamic> json) {
     return OhlcvPoint(
-      timeOpen: DateTime.tryParse(json['time_open'] as String? ?? '') ??
+      timeOpen:
+          DateTime.tryParse(json['time_open'] as String? ?? '') ??
           DateTime.fromMillisecondsSinceEpoch(0),
       open: _num(json['open']) ?? 0,
       high: _num(json['high']) ?? 0,

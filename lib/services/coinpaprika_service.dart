@@ -20,6 +20,7 @@ class CoinPaprikaService {
   final ApiClient _client;
   final _dayFormat = DateFormat('yyyy-MM-dd');
   List<Coin>? _coinsCache;
+  final _metadataCache = <String, CoinMetadata>{};
 
   Future<List<Ticker>> getTickers({int limit = 100}) async {
     final data = await _getList('/tickers');
@@ -40,15 +41,19 @@ class CoinPaprikaService {
     final data = await _getList('/coins');
     final coins = data.map(Coin.fromJson).where((coin) {
       return coin.isActive && coin.rank > 0;
-    }).toList()
-      ..sort((a, b) => a.rank.compareTo(b.rank));
+    }).toList()..sort((a, b) => a.rank.compareTo(b.rank));
     _coinsCache = coins;
     return coins;
   }
 
   Future<CoinMetadata> getCoinMetadata(String coinId) async {
+    final cached = _metadataCache[coinId];
+    if (cached != null) return cached;
+
     final data = await _getMap('/coins/$coinId');
-    return CoinMetadata.fromJson(data);
+    final metadata = CoinMetadata.fromJson(data);
+    _metadataCache[coinId] = metadata;
+    return metadata;
   }
 
   Future<List<OhlcvPoint>> getHistoricalOhlcv({
