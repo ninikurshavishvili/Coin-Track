@@ -10,7 +10,7 @@ Add your screenshots manually by replacing the image paths below.
 
 | Home                                              | Coin Detail                                             | Search                                           | Watchlist                                             |
 | ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
-| <img src="lib/AppScreens/home.png" width="180" /> | <img src="lib/AppScreens/CoinDetail.png" width="180" /> | <img src="docs/images/search.png" width="180" /> | <img src="lib/AppScreens/Wishlist.png" width="180" /> |
+| <img src="lib/AppScreens/home.png" width="180" /> | <img src="lib/AppScreens/CoinDetail.png" width="180" /> | <img src="lib/AppScreens/Search.png" width="180" /> | <img src="lib/AppScreens/Wishlist.png" width="180" /> |
 
 ## Features
 
