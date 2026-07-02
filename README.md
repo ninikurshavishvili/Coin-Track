@@ -6,11 +6,6 @@ The app uses CoinPaprika market data, Riverpod state management, and a custom Ma
 
 ## Preview
 
-
-Add your screenshots manually by replacing the image paths below.
-
-## Preview
-
 Add your screenshots manually by replacing the image paths below.
 
 | Home                                              | Coin Detail                                             | Search                                           | Watchlist                                             |
